@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "version": "1.0.0",
+  "product": "pipmcp",
+  "credential": "PIPMCP_API_KEY",
+  "skills": [
+    {
+      "name": "pipmcp-supabase",
+      "description": "Connect AI agents to Supabase Management using one PipMCP API key and actual hosted tool discovery."
+    }
+  ],
+  "files": {
+    "skills/pipmcp-supabase/SKILL.md": "315ae15e1858afa0487a7870103e40a31d19290d9bd93edf32aa3b4f8d95aaf9"
+  }
+}

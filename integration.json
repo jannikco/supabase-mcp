@@ -5,22 +5,24 @@
   "releaseEligible": true,
   "maintainer": "jannikco",
   "license": "MIT",
-  "sourceRevision": "adbd2bc5b8781b64e397a97257874a1802266399f33ed1c446ac59e06a833512",
+  "sourceRevision": "1e0cd18e0594d0104be47608fc978345735227a90a43193c59465a026673314c",
   "evidence": [
-    "Source-backed provider setup metadata",
-    "Offline configuration and MCP protocol tests"
+    "Actual tools/call and direct-provider request contract tests"
   ],
   "provenance": [
-    "https://api.supabase.com/api/v1-json"
+    "https://supabase.com/docs/reference/api/introduction"
   ],
   "id": "supabase-mcp",
-  "kind": "mcp-setup",
+  "kind": "provider-connector",
   "product": "pipmcp",
-  "title": "Supabase MCP setup and connection checker",
-  "description": "Generate Supabase MCP client configuration, inspect available tools and validate hosted endpoint access through PipMCP.",
-  "operationIds": [],
+  "title": "Supabase Management MCP server",
+  "description": "Compare accessible organizations and projects before choosing a deployment target. This is the Management API, not database table access.",
+  "operationIds": [
+    "list_projects",
+    "list_organizations"
+  ],
   "appSlug": "supabase",
-  "appName": "Supabase",
+  "appName": "Supabase Management",
   "providerDocs": "https://api.supabase.com/api/v1-json",
   "providerWebsite": "https://supabase.com/",
   "authentication": {
@@ -28,6 +30,7 @@
     "requiredCredentialFields": [
       "token"
     ],
+    "settings": {},
     "requiredHeaderNames": [],
     "helpUrl": "https://supabase.com/docs/reference/api/introduction",
     "tenantRequired": false,
@@ -35,5 +38,195 @@
       "ref"
     ]
   },
-  "attributionSlug": "github-supabase-mcp"
+  "attributionSlug": "github-supabase-mcp",
+  "artifactType": "connector",
+  "qualityVersion": 2,
+  "connectorId": "supabase",
+  "connector": {
+    "id": "supabase",
+    "name": "Supabase Management",
+    "version": "0.2.0",
+    "baseUrl": "https://api.supabase.com/v1",
+    "auth": {
+      "type": "bearer",
+      "env": "SUPABASE_ACCESS_TOKEN"
+    },
+    "tools": [
+      {
+        "name": "list_projects",
+        "description": "List Supabase projects visible to this Management API token.",
+        "method": "GET",
+        "path": "/projects",
+        "readOnly": true,
+        "inputSchema": {
+          "type": "object",
+          "properties": {},
+          "required": [],
+          "additionalProperties": false
+        },
+        "bindings": {
+          "path": [],
+          "query": {},
+          "body": {}
+        },
+        "sampleArguments": {},
+        "provenance": [
+          "https://supabase.com/docs/reference/api/introduction"
+        ]
+      },
+      {
+        "name": "list_organizations",
+        "description": "List Supabase organizations visible to the token.",
+        "method": "GET",
+        "path": "/organizations",
+        "readOnly": true,
+        "inputSchema": {
+          "type": "object",
+          "properties": {},
+          "required": [],
+          "additionalProperties": false
+        },
+        "bindings": {
+          "path": [],
+          "query": {},
+          "body": {}
+        },
+        "sampleArguments": {},
+        "provenance": [
+          "https://supabase.com/docs/reference/api/introduction"
+        ]
+      }
+    ],
+    "workflow": {
+      "name": "Supabase estate inventory",
+      "description": "Compare accessible organizations and projects before choosing a deployment target. This is the Management API, not database table access.",
+      "steps": [
+        "list_projects",
+        "list_organizations"
+      ]
+    },
+    "provenance": [
+      "https://supabase.com/docs/reference/api/introduction"
+    ],
+    "verification": "mock-only",
+    "providerLiveValidation": "not-run",
+    "capabilityEvidence": {
+      "local": {
+        "level": "Tested",
+        "operations": [
+          {
+            "name": "list_projects",
+            "level": "Tested",
+            "evidenceRefs": [
+              "Provider request/stdio contract tests"
+            ],
+            "method": "contract-fixture"
+          },
+          {
+            "name": "list_organizations",
+            "level": "Tested",
+            "evidenceRefs": [
+              "Provider request/stdio contract tests"
+            ],
+            "method": "contract-fixture"
+          }
+        ],
+        "evidenceRefs": [
+          "Provider request/stdio contract tests"
+        ],
+        "mode": "local"
+      },
+      "managed": {
+        "level": "Documented",
+        "operations": [
+          {
+            "name": "list_projects",
+            "level": "Documented",
+            "evidenceRefs": [],
+            "method": "documentation"
+          },
+          {
+            "name": "list_organizations",
+            "level": "Documented",
+            "evidenceRefs": [],
+            "method": "documentation"
+          }
+        ],
+        "evidenceRefs": [],
+        "mode": "managed"
+      }
+    },
+    "repoId": "supabase-mcp",
+    "appSlug": "supabase",
+    "product": "pipmcp",
+    "artifactType": "connector",
+    "sourceRevision": "1e0cd18e0594d0104be47608fc978345735227a90a43193c59465a026673314c",
+    "authentication": {
+      "type": "bearer",
+      "requiredCredentialFields": [
+        "token"
+      ],
+      "settings": {},
+      "requiredHeaderNames": [],
+      "helpUrl": "https://supabase.com/docs/reference/api/introduction",
+      "tenantRequired": false,
+      "accountParameterNames": [
+        "ref"
+      ]
+    },
+    "managedAvailability": {
+      "status": "listed",
+      "checkedAt": "2026-11-08T12:29:10.433747+00:00"
+    }
+  },
+  "capabilityEvidence": {
+    "local": {
+      "level": "Tested",
+      "operations": [
+        {
+          "name": "list_projects",
+          "level": "Tested",
+          "evidenceRefs": [
+            "Provider request/stdio contract tests"
+          ],
+          "method": "contract-fixture"
+        },
+        {
+          "name": "list_organizations",
+          "level": "Tested",
+          "evidenceRefs": [
+            "Provider request/stdio contract tests"
+          ],
+          "method": "contract-fixture"
+        }
+      ],
+      "evidenceRefs": [
+        "Provider request/stdio contract tests"
+      ],
+      "mode": "local"
+    },
+    "managed": {
+      "level": "Documented",
+      "operations": [
+        {
+          "name": "list_projects",
+          "level": "Documented",
+          "evidenceRefs": [],
+          "method": "documentation"
+        },
+        {
+          "name": "list_organizations",
+          "level": "Documented",
+          "evidenceRefs": [],
+          "method": "documentation"
+        }
+      ],
+      "evidenceRefs": [],
+      "mode": "managed"
+    }
+  },
+  "utility": {
+    "problem": "Compare accessible organizations and projects before choosing a deployment target. This is the Management API, not database table access.",
+    "output": "Actual provider API results through local MCP tools"
+  }
 }

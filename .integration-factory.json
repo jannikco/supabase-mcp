@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "status": "ready",
+  "verification": "mock-only",
+  "releaseEligible": true,
+  "maintainer": "jannikco",
+  "license": "MIT",
+  "sourceRevision": "adbd2bc5b8781b64e397a97257874a1802266399f33ed1c446ac59e06a833512",
+  "evidence": [
+    "Source-backed provider setup metadata",
+    "Offline configuration and MCP protocol tests"
+  ],
+  "provenance": [
+    "https://api.supabase.com/api/v1-json"
+  ],
+  "id": "supabase-mcp",
+  "kind": "mcp-setup",
+  "product": "pipmcp",
+  "title": "Supabase MCP setup and connection checker",
+  "description": "Generate Supabase MCP client configuration, inspect available tools and validate hosted endpoint access through PipMCP.",
+  "operationIds": [],
+  "appSlug": "supabase",
+  "appName": "Supabase",
+  "providerDocs": "https://api.supabase.com/api/v1-json",
+  "providerWebsite": "https://supabase.com/",
+  "authentication": {
+    "type": "bearer",
+    "requiredCredentialFields": [
+      "token"
+    ],
+    "requiredHeaderNames": [],
+    "helpUrl": "https://supabase.com/docs/reference/api/introduction",
+    "tenantRequired": false,
+    "accountParameterNames": [
+      "ref"
+    ]
+  },
+  "attributionSlug": "github-supabase-mcp",
+  "factory": "leadadapter-pipmcp",
+  "generatorVersion": 1
+}
